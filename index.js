@@ -26,7 +26,7 @@ app.use("/api", postRoute)
 app.use("/", commentRoute)
 
 db.sequelize.sync().then(()=>{
-    app.listen(4500, ()=>{
+    app.listen(3006, ()=>{
         console.log("Server started");
     })
 })
