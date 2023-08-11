@@ -1,3 +1,6 @@
+const {User}=require("./users.model")
+const {PostHead}=require("./postHead.models")
+
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
     id: {
@@ -21,34 +24,20 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.NOW,
     },
     userId: {
-      type: DataTypes.INTEGER,
+      type: sequelize.INTEGER,
       allowNull: false,
-      references: {
-        model: 'User',
-        key: 'id',
-      },
     },
-    postHeadId: {
-      type: DataTypes.INTEGER,
+    postId: {
+      type: sequelize.INTEGER,
       allowNull: false,
-      references: {
-        model: 'PostHead',
-        key: 'id',
-      },
     },
   });
 
-  Comment.associate = (models) => {
-    Comment.belongsTo(models.PostHead, {
-      foreignKey: 'postHeadId',
-      as: 'postHead',
-    });
+  User.hasMany(Comment);
+  Comment.belongsTo(User);
 
-    Comment.belongsTo(models.User, {
-      foreignKey: 'userId',
-      as: 'user',
-    });
-  };
+  PostHead.hasMany(Comment);
+  Comment.belongsTo(PostHead);
 
 
   return Comment;
