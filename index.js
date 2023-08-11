@@ -1,4 +1,4 @@
-const express=require("express")
+// const express=require("express")
 const cookieParser = require('cookie-parser');
 
 const db=require("./models/index")
@@ -21,9 +21,9 @@ app.get("/", (req,res)=>{
 })
 
 
-app.use("/", userRoute)
+// app.use("/", userRoute)
 app.use("/api", postRoute)
-app.use("/", commentRoute)
+// app.use("/", commentRoute)
 
 db.sequelize.sync().then(()=>{
     app.listen(3006, ()=>{
