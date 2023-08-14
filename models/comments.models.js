@@ -20,14 +20,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    // userId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'User',
-    //     key: 'id',
-    //   },
-    // },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id',
+      },
+    },
     postHeadId: {
       type: DataTypes.INTEGER,
       allowNull: false,

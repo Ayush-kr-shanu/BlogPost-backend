@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: {
         model: "User",
-        field: "id"
+        key: "id"
       }
     },
     comments: {
